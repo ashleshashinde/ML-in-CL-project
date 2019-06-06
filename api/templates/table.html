@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- <meta charset="utf-8"> -->
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+<!-- <meta name="description" content="My Podcast template project"> -->
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!-- <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-4.1.2/bootstrap.min.css"> -->
+<!-- <link href="../static/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+<!-- <link href="../static/plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="../static/css/main_styles.css"> -->
+<!-- <meta name="description" content="My Podcast template project"> -->
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<link rel="stylesheet" type="text/css" href="static/css/bootstrap-4.1.2/bootstrap.min.css">
+<link href="../static/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../static/plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+<!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
+<link rel="stylesheet" type="text/css" href="../static/css/main_styles.css">
+<link rel="stylesheet" type="text/css" href="../static/css/responsive.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="My Podcast template project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap-4.1.2/bootstrap.min.css">
+<link href="../static/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../static/plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../static/css/main_styles.css">
+<!-- <link rel="stylesheet" type="text/css" href="static/css/responsive.css"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<div class="super_container">
+
+	<!-- Header -->
+				<header class="header trans_400">
+						<div class="container">
+
+		
+
+			<div class="row" style="margin-left: 32px;">
+				<br>
+					<div class="header_content-d-flex flex-row align-items-center justify-content-start trans_400-">
+						<nav class="main_nav">
+							<ul class="d-flex flex-row align-items-start justify-content-start">
+								<li><a href="/" style="color: gray">Home</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		
+
+		
+	</header>
+
+
+
+	{% block content %}
+
+		<div class="container">
+		
+
+<div class="table-bordered table-responsive text-center" id="table">
+<table class="table table-striped" id="result_table" style="border: 2px solid #ddd;" >
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Cover</th>
+      <th scope="col">Title</th>
+      <th scope="col">Artist</th>
+      <th scope="col" style="display:none">Lyrics</th>
+      <!-- <th scope="col">Mood Prediction</th> -->
+      <th scope="col">Mood Prediction</th>
+      <th scope="col">Genre Prediction</th>
+      <th scope="col">Feedback For Mood Predictions</th>
+      <!-- <th scope="col">Feedback No</th> -->
+      <!-- <th scope="col">Answer</th> -->
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for song in data %}
+       <tr>
+       <td>{{song.id}}</td>
+      <td scope="row"><img src={{song.icon_url}}></td>
+      <td>{{song.title}}</td>
+      <!-- <input type="hidden" name="songtitle" value="{{ song.title }}" /> -->
+      <td>{{song.artist}}</td>
+      <!-- <input type="hidden" name="songartist" value="{{ song.artist }}" /> -->
+      <!-- <input type="hidden" name="songmood" value="{{ song.mood }}" /> -->
+       <td style="display:none">{{song.lyrics}}</td>
+      <!-- {% if song.mood == 'sad' %}
+           <td><img src ="https://media.giphy.com/media/7emcYTC57HqO4/giphy.gif" width="100" height="100"></td>
+      {% else %}
+           <td><img src ="https://media.giphy.com/media/qNnQAESrblfDG/giphy.gif" width="100" height="100"></td>
+       {% endif %} -->
+       <td >{{song.mood}}</td>
+      <td>{{song.genre}}</td>
+      <td><button class="btn btn-success"  id = "correct" style="border-radius:3.25rem" onclick="set_correct({{song.id}})"><i class="fa fa-check" style="color:green" aria-hidden="false"></i></button>
+      <button class="btn btn-success" id= "wrong" style="border-radius: 3.25rem" onclick="set_wrong({{song.id}})"><i class="fa fa-times" style="color:red" aria-hidden="false"></i></button></td>
+      <td  style="display:none;" id={{song.id}}></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><button class="btn btn-lg" style="color: #616265;"onclick="save_table()">Submit</button></td>
+</table>
+<!-- <button class="btn btn-lg" onclick="save_table()">Submit</button> -->
+</div>
+
+</body>
+</div>
+</div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="span" class="close">&times;</span>
+    <p>Thank You for your Feedback!!</p>
+  </div>
+
+</div>
+<script src="../static/js/jquery-3.3.1.min.js"></script>
+<!-- <script src="static/css/bootstrap-4.1.2/popper.js"></script> -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../static/css/bootstrap-4.1.2/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+// 	function set_correct(){
+//   $('#feedback_hidden').val("0");
+//   alert($('#feedback_hidden').val());
+// }
+
+function set_wrong(rowId){
+  var z = document.getElementById(rowId);
+        z.innerHTML = "1";
+};
+function set_correct(rowId){
+    var z = document.getElementById(rowId);
+        z.innerHTML = "0";
+    
+};
+var modal = document.getElementById('myModal');
+span.onclick = function() {
+  modal.style.display = "none";
+}
+function save_table(){
+// var html_str=""
+// var tbl = $('table#result_table tr').get().map(function(row) {
+// 	return $(row).find('td').get().map(function(cell) {
+//     html_str= html_str+($(cell).html());
+// //     alert(html_str)
+// //     $.post( "/feedback", {
+// //     javascript_data: html_str 
+// // });
+
+//   }); 
+// });
+//  $.post( "/feedback", {
+//     javascript_data: html_str 
+// });
+// };
+
+// var markup = ""
+// markup = markup + document.getElementById('table').innerHTML;
+// alert(markup);
+//  $.post( "/feedback", {
+//     javascript_data: markup
+// });
+// };
+var table=[]
+$('#result_table tr').each(function() {
+	var row=[]
+	$(this).find('td').each(function() {
+    row.push($(this).text());    
+});
+    table.push(row) 
+});
+ data= JSON.stringify(table);
+ // alert(data)
+ var modal = document.getElementById('myModal');
+ modal.style.display = "block";
+ var span=document.getElementById('span');
+
+
+
+ $.post( "/feedback", {
+    javascript_data: data
+});
+}
+
+
+
+</script>
+<script src="static/js/jquery-3.3.1.min.js"></script>
+<!-- <script src="static/css/bootstrap-4.1.2/popper.js"></script> -->
+<script src="static/css/bootstrap-4.1.2/bootstrap.min.js"></script>
+<!-- <script src="static/plugins/greensock/TweenMax.min.js"></script>
+</html>
+{% endblock content %}

@@ -1,0 +1,18 @@
+<div class="container">
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+ 
+{% for message in messages %}
+{% if "Error" not in message: %}
+<div class="alert alert-info">
+        {{ message }}</div>
+{% endif %}
+ 
+{% if "Error" in message: %}
+<div class="alert alert-warning">
+                {{ message }}</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+</div>

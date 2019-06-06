@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mood Chords</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="My Podcast template project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="static/css/bootstrap-4.1.2/bootstrap.min.css">
+<link href="static/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="static/plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="static/css/main_styles.css">
+<!-- <link rel="stylesheet" type="text/css" href="static/css/responsive.css"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="header trans_400">
+
+		
+
+		<div class="container">
+			<div class="row">
+				<br>
+					<div class="header_content-d-flex flex-row align-items-center justify-content-start trans_400-">
+						<nav class="main_nav">
+							<ul class="d-flex flex-row align-items-start justify-content-start">
+								<li><a href="javascript:history.go(0)">Home</a></li>
+							</ul>
+						</nav>
+					</div>
+				
+			</div>
+		</div>
+
+		
+	</header>
+
+
+	<!-- Home -->
+
+	<div class="home">
+		<div class="background_image" style="background-image:url(static/images/music-instruments-2887457_1920.jpg)"></div>
+
+		<div class="home_container">
+			<div class="row">
+					<h2 class="heading"style="text-align: center;text-align: center;padding-left: 30rem;font-size: 4rem;margin-bottom: 2rem;color: white;">Mood Chords</h2>
+				</div>
+
+			<div class="container">
+				
+				<div class="row">
+					<div class="col">
+						<form action="" method="post" role="form">
+							 {{ form.csrf }}
+                            <div class="input text row"> 
+                            	<input type="text" class="form-control col-lg-11" id="artist" name="artist" placeholder="Song Title / Name of the Artist">
+                            	<button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>     
+                        </div>
+                        </form>
+ 
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Shows -->
+
+	<div class="shows">
+		<div class="container">
+			<div class="row shows_row">
+				
+				<!-- Show -->
+				<div class="col-lg-6">
+					<div class="show">
+						<div class="show_image">
+							<a href="/topLyrics/toplyrics">
+								<img src="static/images/show_1.jpg" alt="https://unsplash.com/@icons8">
+							</a>
+							<div class="show_tags">
+								
+							</div>
+							<div class="show_play_icon"><img src="static/images/play.svg" alt="https://www.flaticon.com/authors/cole-bemis"></div>
+						</div>
+						<div class="show_content">
+							<!-- <div class="show_date"><a href="#">24 September, 2018</a></div> -->
+							<div class="show_title"><a href="/topLyrics/toplyrics">Top Lyrics.</a></div>
+							
+						</div>
+					</div>
+				</div>
+
+				<!-- Show -->
+			    <div class="col-lg-6">
+					<div class="show">
+						<div class="show_image">
+							<a href="/topLyrics/newlyrics">
+								<img src="static/images/show_2.jpg" alt="https://unsplash.com/@pawel_czerwinski">
+							</a>
+							
+							<div class="show_play_icon"><img src="static/images/play.svg" alt="https://www.flaticon.com/authors/cole-bemis"></div>
+						</div>
+						<div class="show_content">
+							<!-- <div class="show_date"><a href="#">24 September, 2018</a></div> -->
+							<div class="show_title"><a href="/topLyrics/newlyrics">New Lyrics</a></div>
+					
+						</div>
+					</div>
+				</div>
+ 
+ 			 <!-- Show -->
+				<!-- <div class="col-lg-4">
+					<div class="show">
+						<div class="show_image">
+							<a href="episode.html">
+								<img src="static/images/show_3.jpg" alt="https://unsplash.com/@trevcole">
+							
+							<div class="show_play_icon"><img src="static/images/play.svg" alt="https://www.flaticon.com/authors/cole-bemis"></div>
+						</div> -->
+						<!-- <div class="show_content">-->
+							<!-- <div class="show_date"><a href="#">24 September, 2018</a></div> -->
+							<!-- <div class="show_title"><a href="episode.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></div>
+							
+						</div> --> 
+					<!-- </div>
+				</div>  -->
+ 
+			</div>
+			
+		</div>
+	</div>
+
+</br></br>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+ 
+{% for message in messages %}
+{% if "Error" not in message[1]: %}
+<div class="alert alert-info">
+        {{ message[1] }}</div>
+{% endif %}
+ 
+{% if "Error" in message[1]: %}
+<div class="alert alert-warning">
+                {{ message[1] }}</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+</div> 
+
+<script src="static/js/jquery-3.3.1.min.js"></script>
+<!-- <script src="static/css/bootstrap-4.1.2/popper.js"></script> -->
+<script src="static/css/bootstrap-4.1.2/bootstrap.min.js"></script>
+<!-- <script src="static/plugins/greensock/TweenMax.min.js"></script>
+<script src="static/plugins/greensock/TimelineMax.min.js"></script>
+<script src="static/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="static/plugins/greensock/animation.gsap.min.js"></script>
+<script src="static/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="static/plugins/easing/easing.js"></script>
+<script src="static/plugins/colorbox/jquery.colorbox-min.js"></script>
+<script src="static/plugins/progressbar/progressbar.min.js"></script>
+<script src="static/plugins/parallax-js-master/parallax.min.js"></script> -->
+<!-- <script src="static/js/custom.js"></script> -->
+</body>
+</html>
